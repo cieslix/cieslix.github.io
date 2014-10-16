@@ -1,10 +1,10 @@
 # Site settings
 title: Cieslix Home Page
 email: cieslix@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
+description: >  
   Paweł Cieślik "CIESLIX"
   PHP Developer (Magento, Zend Framework 1)
-  email: cieslix@gmail.com, mobile: +48 888 121 538
+  email: cieslix@gmail.com, mobile: +48888121538
   30-698 Krakow, ul. Niewodniczańskiego 37a
   NIP: 675-128-62-47, REGON: 121208770
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -14,3 +14,4 @@ github_username:  cieslix
 
 # Build settings
 markdown: kramdown
+test: > # this means to ignore newlines until "baseurl:"
