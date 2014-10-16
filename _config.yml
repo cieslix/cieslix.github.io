@@ -3,7 +3,6 @@ title: Cieslix Home Page
 email: cieslix@gmail.com
 description: > #
   Paweł Cieślik PHP Developer (Magento, Zend Framework 1)
-  email: cieslix@gmail.com, mobile: +48888121538
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://cieslix.github.io/" # the base hostname & protocol for your site
 twitter_username: cieslix
