@@ -1,11 +1,8 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2014-10-16 20:18:06
-categories: jekyll update
+title:  "Start new page"
+date:   2014-10-16 20:00:00
+categories: start update
 ---
 
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
+Start nowej strony
