@@ -16,7 +16,9 @@
             $.ajaxSetup({ cache: true });
             $.getScript('//connect.facebook.net/en_UK/all.js', function () {
                 FB.init({
-                    appId: '{{ site.facebook_app_id }}'
+                    appId: '{{ site.facebook_app_id }}',
+                    xfbml      : true,
+                    version    : 'v2.1'
                 });
             });
         });
