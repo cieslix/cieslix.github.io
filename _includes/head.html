@@ -12,14 +12,20 @@
     <script type="text/javascript" src='{{ "/js/jquery.min.js" | prepend: site.baseurl }}'></script>
     {% if site.facebook_app_id %}
     <script>
+        var Cieslix = {
+            execute: function () {
+                console.log(this);
+            }
+        };
         $(document).ready(function () {
             $.ajaxSetup({ cache: true });
             $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
                 FB.init({
                     appId: '{{ site.facebook_app_id }}',
-                    xfbml      : true,
-                    version    : 'v2.1'
+                    xfbml: true,
+                    version: 'v2.1'
                 });
+                Cieslix.execute();
             });
         });
     </script>
