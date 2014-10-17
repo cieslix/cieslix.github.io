@@ -11,7 +11,8 @@ permalink: /gallery/
                 function (response) {
                     if (response && !response.error) {
                         /* handle the result */
-                        $(response).each(function () {
+                        console.log(response);
+                        $(response.data).each(function () {
                             $('<img />', { 'data-src': this.picture, src: this.icon, alt: this.id }).appendTo($('#gallery'));
                         });
                     }
