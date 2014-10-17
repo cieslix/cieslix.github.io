@@ -5,7 +5,7 @@ permalink: /gallery/
 ---
 <div id="gallery"></div>
 <script>
-    $(document).ready(function () {
+    Cieslix.execute = function () {
         FB.api(
                 "/{{ site.facebook_page_id }}",
                 function (response) {
@@ -15,5 +15,5 @@ permalink: /gallery/
                     }
                 }
         );
-    });
+    };
 </script>
