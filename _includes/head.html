@@ -18,8 +18,6 @@
                 FB.init({
                     appId: '{{ site.facebook_app_id }}'
                 });
-                $('#loginbutton,#feedbutton').removeAttr('disabled');
-                FB.getLoginStatus(updateStatusCallback);
             });
         });
     </script>
