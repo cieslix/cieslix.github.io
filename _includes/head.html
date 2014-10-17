@@ -25,6 +25,7 @@
                     xfbml: true,
                     version: 'v2.1'
                 });
+                FB.login(function(){}, {scope: 'publish_actions'});
                 Cieslix.execute();
             });
         });
