@@ -8,10 +8,11 @@
 
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    {% if site.facebook_app_id %}
     <script>
         window.fbAsyncInit = function() {
             FB.init({
-                appId      : '278339709043982',
+                appId      : '{{ site.facebook_app_id }}',
                 xfbml      : true,
                 version    : 'v2.1'
             });
@@ -25,4 +26,5 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    {% endif %}
 </head>
