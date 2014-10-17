@@ -5,5 +5,13 @@ permalink: /gallery/
 ---
 <div id="gallery"></div>
 <script>
-            
+    FB.api(
+            "/{{ site.facebook_page_id }}",
+            function (response) {
+                if (response && !response.error) {
+                    /* handle the result */
+                    console.log(response);
+                }
+            }
+    );
 </script>
