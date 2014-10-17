@@ -5,11 +5,10 @@ permalink: /gallery/
 ---
 <div id="gallery"></div>
 <script>
-    $(document).ready(function(){
-        while(!FB.readyTest) {
-            console.log(1);
-        }
+    $(document).ready(function () {
+        setTimeout(Cieslix.execute, 200);
     });
+    var Cieslix = Cieslix || {};
     Cieslix.execute = function () {
         FB.api(
                 "/{{ site.facebook_page_id }}/photos",
