@@ -7,7 +7,7 @@ permalink: /gallery/
 <script>
     Cieslix.execute = function () {
         FB.api(
-                "/{{ site.facebook_page_id }}",
+                "/{{ site.facebook_page_id }}/photos",
                 function (response) {
                     if (response && !response.error) {
                         /* handle the result */
