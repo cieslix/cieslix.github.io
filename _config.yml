@@ -12,6 +12,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://cieslix.github.io/" # the base hostname & protocol for your site
 twitter_username: cieslix
 github_username: cieslix
+facebook_app_id: 278339709043982
 
 # Build settings
 markdown: kramdown
