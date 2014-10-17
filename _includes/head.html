@@ -12,11 +12,8 @@
     <script type="text/javascript" src='{{ "/js/jquery.min.js" | prepend: site.baseurl }}'></script>
     {% if site.facebook_app_id %}
     <script>
-        var Cieslix = {
-            execute: function () {
-                console.log(this);
-            }
-        };
+        var FB = FB || {};
+        FB.readyTest = false;
         $(document).ready(function () {
             $.ajaxSetup({ cache: true });
             $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
@@ -25,8 +22,9 @@
                     xfbml: true,
                     version: 'v2.1'
                 });
-                FB.login(function(){}, {scope: 'publish_actions'});
-                Cieslix.execute();
+                FB.login(function () {
+                }, {scope: 'publish_actions'});
+                FB.readyTest = true;
             });
         });
     </script>
