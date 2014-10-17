@@ -13,7 +13,7 @@ permalink: /gallery/
                         /* handle the result */
                         console.log(response);
                         $(response.data).each(function () {
-                            $('<img />', { 'data-src': this.picture, src: this.icon, alt: this.id }).appendTo($('#gallery'));
+                            $('<img />', { src: this.picture, alt: this.link }).appendTo($('#gallery'));
                         });
                     }
                 }
