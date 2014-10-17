@@ -3,14 +3,11 @@
         <div class="footer-col-wrapper">
             <div class="footer-col  footer-col-1">
                 <ul class="contact-list">
-                    <li>{{ site.company }}</li>
-                    <li>{{ site.address }}</li>
-                    <li>{{ site.vatid }}</li>
                     <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
                     <li><a href="tel:{{ site.telephone }}">{{ site.telephone }}</a></li>
                 </ul>
             </div>
-            <div class="footer-col  footer-col-2">
+            <div class="footer-col footer-col-2">
                 <ul class="social-media-list">
                     {% if site.facebook_username %}
                     <li>
@@ -53,9 +50,13 @@
                     {% endif %}
                 </ul>
             </div>
-
             <div class="footer-col  footer-col-3">
                 <p class="text">{{ site.description }}</p>
+                <ul class="contact-address">
+                    <li>{{ site.company }}</li>
+                    <li>{{ site.address }}</li>
+                    <li>{{ site.vatid }}</li>
+                </ul>
             </div>
         </div>
 
