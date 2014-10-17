@@ -13,7 +13,6 @@
     {% if site.facebook_app_id %}
     <script>
         $(document).ready(function () {
-            var FB;
             $.ajaxSetup({ cache: true });
             $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
                 FB.init({
