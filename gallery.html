@@ -10,6 +10,7 @@ permalink: /gallery/
     "use strict";
     $(document).ready(function () {
         setTimeout(Cieslix.getFeed, 1000);
+        setTimeout(Cieslix.initMasonry, 2000);
     });
 
     var Cieslix = Cieslix || {
@@ -38,11 +39,9 @@ permalink: /gallery/
                     if (response && !response.error) {
 //                        console.log(response);
                         Cieslix.initMasonry('#container', '.item');
-
                         $(response.data).each(function () {
                             Cieslix.makeElement(this, $('#container'));
                         });
-
                     }
                 }
         );
