@@ -3,7 +3,9 @@ layout: page
 title: Gallery
 permalink: /gallery/
 ---
-<div id="container"></div>
+<div id="container">
+    <img src='{{ "/img/loader.gif" | prepend: site.baseurl }}' alt="loader-gif"/>
+</div>
 <script>
     $(document).ready(function () {
         setTimeout(Cieslix.execute, 1000);
