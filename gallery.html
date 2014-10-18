@@ -5,34 +5,34 @@ permalink: /gallery/
 ---
 <div id="gallery"></div>
 <script>
-//    $(document).ready(function () {
-//        setTimeout(Cieslix.execute, 1000);
-//    });
-//    var Cieslix = Cieslix || {};
-//
-//    Cieslix.makeHtml = function (item, parentId) {
-//        console.log(item);
-//        var $img = $('<img />', { src: item.picture, alt: item.story ? item.story : item.message});
-//        var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
-//        var $span = $('<span />', {text: item.created_time});
-//        var $parent = $(parentId);
-//        $span.append($a);
-//        $img.append($a);
-//        $a.append($parent);
-//    }
-//
-//    Cieslix.execute = function () {
-//        FB.api(
-//                "/{{ site.facebook_page_id }}/feed",
-//                function (response) {
-//                    if (response && !response.error) {
-//                        /* handle the result */
-////                        console.log(response);
-//                        $(response.data).each(function () {
-//                            Cieslix.makeHtml(this, '#gallery');
-//                        });
-//                    }
-//                }
-//        );
-//    };
+    $(document).ready(function () {
+        setTimeout(Cieslix.execute, 1000);
+    });
+    var Cieslix = Cieslix || {};
+
+    Cieslix.makeHtml = function (item, parentId) {
+        console.log(item);
+        var $img = $('<img />', { src: item.picture, alt: item.story ? item.story : item.message});
+        var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
+        var $span = $('<span />', {text: item.created_time});
+        var $parent = $(parentId);
+        $span.appendTo($a);
+        $img.appendTo($a);
+        $a.appendTo($parent);
+    }
+
+    Cieslix.execute = function () {
+        FB.api(
+                "/{{ site.facebook_page_id }}/feed",
+                function (response) {
+                    if (response && !response.error) {
+                        /* handle the result */
+//                        console.log(response);
+                        $(response.data).each(function () {
+                            Cieslix.makeHtml(this, '#gallery');
+                        });
+                    }
+                }
+        );
+    };
 </script>
