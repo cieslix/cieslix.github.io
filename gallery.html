@@ -3,24 +3,23 @@ layout: page
 title: Gallery
 permalink: /gallery/
 ---
-<div id="gallery"></div>
+<div id="gallery">
+    <ul></ul>
+</div>
 <script>
     $(document).ready(function () {
         setTimeout(Cieslix.execute, 1000);
     });
     var Cieslix = Cieslix || {};
 
-    Cieslix.makeHtml = function (item, parentId) {
+    Cieslix.makeHtml = function (item, $parent) {
         console.log(item);
+        var $li = $('<li />');
         var $img = $('<img />', { src: item.picture, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
         var $span = $('<span />', {text: item.created_time});
-        var $parent = $(parentId);
-//        $span.prependTo($a);
-        $a.prepend($span).append($img);
-//        $img.appendTo($a);
-//        $a.appendTo($parent);
-        $parent.append($a);
+        $li.prepend($span).append($img).append($a);
+        $parent.append($li);
     }
 
     Cieslix.execute = function () {
@@ -31,7 +30,7 @@ permalink: /gallery/
                         /* handle the result */
 //                        console.log(response);
                         $(response.data).each(function () {
-                            Cieslix.makeHtml(this, '#gallery');
+                            Cieslix.makeHtml(this, $('#gallery ul'));
                         });
                     }
                 }
