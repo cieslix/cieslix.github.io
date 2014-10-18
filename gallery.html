@@ -21,7 +21,7 @@ permalink: /gallery/
         var $div = $('<div class="item"/>');
         var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
         var $p = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
-        var $a = $('<a />', { href: item.link, text: '-> link' });
+        var $a = $('<a />', { href: item.link, text: '--- see more ---' });
         var $small = $('<small />', {text: item.created_time});
         $p.prepend('<br />').prepend($small);
         $div.prepend($p)
