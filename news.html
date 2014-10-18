@@ -21,10 +21,14 @@ permalink: /news/
     };
 
     Cieslix.makeElement = function (item, $parent) {
-        console.log(item);
         var $div = $('<div class="item"/>');
         if (!!item.picture) {
-            var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id, onclick: "Cieslix.getSource(this.id)"});
+            var $img = $('<img />', {
+                src: item.picture,
+                id: item.object_id ? item.object_id : item.id,
+                alt: item.id,
+                onclick: "Cieslix.getSource(this.id)"
+            });
             $div.prepend($img)
         }
         var $p = $('<p />', { text: item.story ? item.story : item.message });
