@@ -23,7 +23,7 @@ permalink: /gallery/
         var $p = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
         var $a = $('<a />', { href: item.link, text: '-> link' });
         var $small = $('<small />', {text: item.created_time});
-        $p.prepend($small).append('<br />');
+        $p.prepend('<br />').prepend($small);
         $div.prepend($p)
                 .prepend($img)
                 .append($a);
