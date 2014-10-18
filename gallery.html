@@ -18,7 +18,7 @@ permalink: /gallery/
         var $img = $('<img />', { src: item.picture, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
         var $span = $('<span />', {text: item.created_time});
-        $li.prepend($span).append($img).append($a);
+        $li.prepend($span).prepend($img).append($a);
         $parent.append($li);
     }
 
