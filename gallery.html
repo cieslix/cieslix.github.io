@@ -20,7 +20,7 @@ permalink: /gallery/
 //        console.log(item);
         var $div = $('<div class="item"/>');
         var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
-        var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
+        var $a = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
         var $p = $('<p />', {text: item.created_time});
         $div.prepend($p).prepend($img).append($a);
         $parent.append($div);
