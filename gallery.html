@@ -11,13 +11,13 @@ permalink: /gallery/
     var Cieslix = Cieslix || {};
     Cieslix.execute = function () {
         FB.api(
-                "/{{ site.facebook_page_id }}/photos",
+                "/{{ site.facebook_page_id }}/feed",
                 function (response) {
                     if (response && !response.error) {
                         /* handle the result */
                         console.log(response);
                         $(response.data).each(function () {
-                            $('<img />', { src: this.picture, alt: this.link }).appendTo($('#gallery'));
+                            $(this.toString()).appendTo($('#gallery'));
                         });
                     }
                 }
