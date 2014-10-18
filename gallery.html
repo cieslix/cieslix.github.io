@@ -18,7 +18,7 @@ permalink: /gallery/
 
     Cieslix.makeElement = function (item, $parent) {
         var $div = $('<div class="item"/>');
-        if (item.picture) {
+        if (!!item.picture) {
             var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
             $div.prepend($img)
         }
