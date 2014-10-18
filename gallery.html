@@ -34,19 +34,21 @@ permalink: /gallery/
     }
 
     Cieslix.getFeed = function () {
-        FB.api(
-                Cieslix.currentUrl,
-                function (response) {
-                    if (response && !response.error) {
-                        $(response.data).each(function () {
-                            Cieslix.makeElement(this, $('#container'));
-                        });
-                        if (!!response.paging && response.paging.next) {
-                            Cieslix.currentUrl = response.paging.next;
+        if (!!Cieslix.currentUrl) {
+            FB.api(
+                    Cieslix.currentUrl,
+                    function (response) {
+                        if (response && !response.error) {
+                            $(response.data).each(function () {
+                                Cieslix.makeElement(this, $('#container'));
+                            });
+                            if (!!response.paging && response.paging.next) {
+                                Cieslix.currentUrl = response.paging.next;
+                            }
                         }
                     }
-                }
-        );
+            );
+        }
     };
 
     Cieslix._api = function (url) {
