@@ -37,6 +37,7 @@ permalink: /gallery/
                 "/{{ site.facebook_page_id }}/feed",
                 function (response) {
                     if (response && !response.error) {
+                        console.log(response);
                         $(response.data).each(function () {
                             Cieslix.makeElement(this, $('#container'));
                         });
