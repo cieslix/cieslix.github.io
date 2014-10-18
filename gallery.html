@@ -28,7 +28,8 @@ permalink: /gallery/
         var $a = $('<a />', { href: this.link, innerHTML: this.message });
         var $span = $('<span />', {innerHTML: this.created_time});
         var $parent = $(parentId);
-        $a.appendChild($span).appendChild($img);
-        $parent.appendChild($a);
+        $span.append($a);
+        $img.append($a);
+        $a.append($parent);
     }
 </script>
