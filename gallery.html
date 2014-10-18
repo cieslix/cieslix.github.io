@@ -7,27 +7,48 @@ permalink: /gallery/
     <img src='{{ "/img/loader.gif" | prepend: site.baseurl }}' alt="loader-gif"/>
 </div>
 <script>
+    "use strict";
     $(document).ready(function () {
-        setTimeout(Cieslix.execute, 1000);
+        setTimeout(Cieslix.getFeed, 1000);
     });
-    var Cieslix = Cieslix || {};
 
-    Cieslix.makeHtml = function (item, $parent) {
+    var Cieslix = Cieslix || {
+        _masonry: undefined
+    };
+
+    Cieslix.makeElement = function (item, $parent) {
 //        console.log(item);
         var $div = $('<div class="item"/>');
-        var $img = $('<img />', { src: item.picture, alt: item.id});
+        var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
         var $p = $('<p />', {text: item.created_time});
         $div.prepend($p).prepend($img).append($a);
         $parent.append($div);
+        Cieslix.masonryAdd($div);
     }
 
-    Cieslix.execute = function () {
+    Cieslix.getFeed = function () {
         FB.api(
                 "/{{ site.facebook_page_id }}/feed",
                 function (response) {
                     if (response && !response.error) {
-                        /* handle the result */
+//                        console.log(response);
+                        Cieslix.initMasonry('#container', '.item');
+
+                        $(response.data).each(function () {
+                            Cieslix.makeElement(this, $('#container'));
+                        });
+
+                    }
+                }
+        );
+    };
+
+    Cieslix._api = function (url) {
+        FB.api(
+                url,
+                function (response) {
+                    if (response && !response.error) {
 //                        console.log(response);
                         $(response.data).each(function () {
                             Cieslix.makeHtml(this, $('#container'));
@@ -42,4 +63,19 @@ permalink: /gallery/
                 }
         );
     };
+
+    Cieslix.initMasonry = function (parentId, childClass) {
+        if (this._masonry === undefined) {
+            this._masonry = new Masonry(parentId, {
+                // options
+                columnWidth: 200,
+                itemSelector: childClass
+            });
+        }
+        this._masonry.layout();
+    }
+
+    Cieslix.masonryAdd = function (element) {
+        this._masonry.appended(element);
+    }
 </script>
