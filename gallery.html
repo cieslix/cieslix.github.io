@@ -20,14 +20,14 @@ permalink: /gallery/
         $img.append($a);
         $a.append($parent);
     }
-    
+
     Cieslix.execute = function () {
         FB.api(
                 "/{{ site.facebook_page_id }}/feed",
                 function (response) {
                     if (response && !response.error) {
                         /* handle the result */
-                        console.log(response);
+//                        console.log(response);
                         $(response.data).each(function () {
                             Cieslix.makeHtml(this, '#gallery');
                         });
