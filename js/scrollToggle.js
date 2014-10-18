@@ -10,7 +10,7 @@ var ScrollToggle = function (top, callbackShow, callbackHide) {
     (function () {
         $(window).scroll(function (event) {
             var y = $(window).scrollTop();
-
+console.log(event);
             if (y >= self.top)
                 self.ontop = 1;
             else
