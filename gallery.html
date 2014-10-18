@@ -9,12 +9,14 @@ permalink: /gallery/
 <script>
     "use strict";
     $(document).ready(function () {
-        Cieslix.initMasonry('#container', '.item');
+        Cieslix.masonry();
         setTimeout(Cieslix.getFeed, 1000);
     });
 
     var Cieslix = Cieslix || {
         _masonry: undefined,
+        container: '#container',
+        itemClass: '.item',
         currentUrl: "/{{ site.facebook_page_id }}/feed"
     };
 
@@ -71,12 +73,12 @@ permalink: /gallery/
         );
     };
 
-    Cieslix.initMasonry = function (parentId, childClass) {
+    Cieslix.masonry = function (parentId, childClass) {
         if (this._masonry === undefined) {
-            this._masonry = new Masonry(parentId, {
+            this._masonry = new Masonry(this.container, {
                 // options
                 columnWidth: 200,
-                itemSelector: childClass
+                itemSelector: this.itemClass
             });
         }
         this._masonry.layout();
@@ -84,5 +86,12 @@ permalink: /gallery/
 
     Cieslix.masonryAdd = function (element) {
         this._masonry.appended(element);
+    }
+
+    Cieslix.scrollBotton = function () {
+        new ScrollToggle($(this.itemClass + ':last').position().top, function () {
+            Cieslix.getFeed();
+        }, function () {
+        });
     }
 </script>
