@@ -23,10 +23,10 @@ permalink: /gallery/
         var $p = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
         var $a = $('<a />', { href: item.link, text: '-> link' });
         var $small = $('<small />', {text: item.created_time});
-        $p.prepend($small);
+        $p.prepend($small).append('<br />');
         $div.prepend($p)
-            .prepend($img)
-            .append($a);
+                .prepend($img)
+                .append($a);
         $parent.append($div);
         Cieslix.masonryAdd($div);
     }
