@@ -20,9 +20,13 @@ permalink: /gallery/
 //        console.log(item);
         var $div = $('<div class="item"/>');
         var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
-        var $a = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
-        var $p = $('<p />', {text: item.created_time});
-        $div.prepend($p).prepend($img).append($a);
+        var $p = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
+        var $a = $('<a />', { href: item.link, text: '-> link' });
+        var $small = $('<small />', {text: item.created_time});
+        $p.prepend($small);
+        $div.prepend($p)
+            .prepend($img)
+            .append($a);
         $parent.append($div);
         Cieslix.masonryAdd($div);
     }
