@@ -10,6 +10,7 @@ permalink: /gallery/
     "use strict";
     $(document).ready(function () {
         Cieslix.masonry();
+        Cieslix.scrollBottom();
         setTimeout(Cieslix.getFeed, 1000);
     });
 
@@ -88,7 +89,7 @@ permalink: /gallery/
         this._masonry.appended(element);
     }
 
-    Cieslix.scrollBotton = function () {
+    Cieslix.scrollBottom = function () {
         new ScrollToggle($(this.itemClass + ':last').position().top, function () {
             Cieslix.getFeed();
         }, function () {
