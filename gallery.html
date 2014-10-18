@@ -10,7 +10,6 @@ permalink: /gallery/
     "use strict";
     $(document).ready(function () {
         setTimeout(Cieslix.getFeed, 1000);
-//        setTimeout(Cieslix.initMasonry, 2000);
     });
 
     var Cieslix = Cieslix || {
@@ -18,16 +17,16 @@ permalink: /gallery/
     };
 
     Cieslix.makeElement = function (item, $parent) {
-//        console.log(item);
         var $div = $('<div class="item"/>');
-        var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
-        var $p = $('<p />', { href: item.link, text: item.story ? item.story : item.message });
+        if (item.picture) {
+            var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
+            $div.prepend($img)
+        }
+        var $p = $('<p />', { text: item.story ? item.story : item.message });
         var $a = $('<a />', { href: item.link, text: '--- see more ---' });
-        var $small = $('<small />', {text: new Date(item.created_time).toJSON().substring(0,10)});
+        var $small = $('<small />', {text: new Date(item.created_time).toJSON().substring(0, 10)});
         $p.prepend('<br />').prepend($small);
-        $div.prepend($p)
-                .prepend($img)
-                .append($a);
+        $div.prepend($p).append($a);
         $parent.append($div);
         Cieslix.masonryAdd($div);
     }
@@ -37,7 +36,6 @@ permalink: /gallery/
                 "/{{ site.facebook_page_id }}/feed",
                 function (response) {
                     if (response && !response.error) {
-//                        console.log(response);
                         Cieslix.initMasonry('#container', '.item');
                         $(response.data).each(function () {
                             Cieslix.makeElement(this, $('#container'));
