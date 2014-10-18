@@ -9,6 +9,7 @@ permalink: /gallery/
 <script>
     "use strict";
     $(document).ready(function () {
+        Cieslix.initMasonry('#container', '.item');
         setTimeout(Cieslix.getFeed, 1000);
     });
 
@@ -36,7 +37,6 @@ permalink: /gallery/
                 "/{{ site.facebook_page_id }}/feed",
                 function (response) {
                     if (response && !response.error) {
-                        Cieslix.initMasonry('#container', '.item');
                         $(response.data).each(function () {
                             Cieslix.makeElement(this, $('#container'));
                         });
