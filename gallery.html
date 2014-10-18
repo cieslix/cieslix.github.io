@@ -12,13 +12,15 @@ permalink: /gallery/
 
     Cieslix.makeHtml = function (item, parentId) {
         console.log(item);
-        var $img = $('<img />', { src: item.picture, alt: item.story ? item.story : item.message});
+        var $img = $('<img />', { src: item.picture, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
         var $span = $('<span />', {text: item.created_time});
         var $parent = $(parentId);
-        $span.appendTo($a);
-        $img.appendTo($a);
-        $a.appendTo($parent);
+//        $span.prependTo($a);
+        $a.prepend($span).append($img);
+//        $img.appendTo($a);
+//        $a.appendTo($parent);
+        $parent.append($a);
     }
 
     Cieslix.execute = function () {
