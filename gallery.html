@@ -10,7 +10,6 @@ permalink: /gallery/
     "use strict";
     $(document).ready(function () {
         Cieslix.masonry();
-        Cieslix.scrollBottom();
         setTimeout(Cieslix.getFeed, 1000);
     });
 
@@ -48,33 +47,14 @@ permalink: /gallery/
                             if (!!response.paging && response.paging.next) {
                                 Cieslix.currentUrl = response.paging.next;
                             }
+                            Cieslix.scrollEvent();
                         }
                     }
             );
         }
     };
 
-    Cieslix._api = function (url) {
-        FB.api(
-                url,
-                function (response) {
-                    if (response && !response.error) {
-//                        console.log(response);
-                        $(response.data).each(function () {
-                            Cieslix.makeHtml(this, $('#container'));
-                        });
-
-                        new Masonry('#container', {
-                            // options
-                            columnWidth: 148,
-                            itemSelector: '.item'
-                        });
-                    }
-                }
-        );
-    };
-
-    Cieslix.masonry = function (parentId, childClass) {
+    Cieslix.masonry = function () {
         if (this._masonry === undefined) {
             this._masonry = new Masonry(this.container, {
                 // options
@@ -89,7 +69,7 @@ permalink: /gallery/
         this._masonry.appended(element);
     }
 
-    Cieslix.scrollBottom = function () {
+    Cieslix.scrollEvent = function () {
         new ScrollToggle($(this.itemClass + ':last').position().top, function () {
             Cieslix.getFeed();
         }, function () {
