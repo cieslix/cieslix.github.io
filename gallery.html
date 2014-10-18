@@ -35,7 +35,7 @@ permalink: /gallery/
 
     Cieslix.getFeed = function () {
         FB.api(
-                this.currentUrl,
+                Cieslix.currentUrl,
                 function (response) {
                     if (response && !response.error) {
                         $(response.data).each(function () {
