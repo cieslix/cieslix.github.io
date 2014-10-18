@@ -26,7 +26,7 @@ permalink: /gallery/
         var $a = $('<a />', { href: item.link, text: '--- see more ---' });
         var $small = $('<small />', {text: new Date(item.created_time).toJSON().substring(0, 10)});
         $p.prepend('<br />').prepend($small);
-        $div.prepend($p).append($a);
+        $div.append($p).append($a);
         $parent.append($div);
         Cieslix.masonryAdd($div);
     }
