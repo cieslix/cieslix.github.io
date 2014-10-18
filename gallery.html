@@ -13,7 +13,7 @@ permalink: /gallery/
     var Cieslix = Cieslix || {};
 
     Cieslix.makeHtml = function (item, $parent) {
-        console.log(item);
+//        console.log(item);
         var $div = $('<div class="item"/>');
         var $img = $('<img />', { src: item.picture, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
