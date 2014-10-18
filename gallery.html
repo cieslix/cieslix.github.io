@@ -3,9 +3,7 @@ layout: page
 title: Gallery
 permalink: /gallery/
 ---
-<div>
-    <ul id="container"></ul>
-</div>
+<div id="container"></div>
 <script>
     $(document).ready(function () {
         setTimeout(Cieslix.execute, 1000);
@@ -14,7 +12,7 @@ permalink: /gallery/
 
     Cieslix.makeHtml = function (item, $parent) {
         console.log(item);
-        var $li = $('<li class="item"/>');
+        var $li = $('<div class="item"/>');
         var $img = $('<img />', { src: item.picture, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
         var $span = $('<span />', {text: item.created_time});
