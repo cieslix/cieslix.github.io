@@ -14,7 +14,8 @@ permalink: /gallery/
     });
 
     var Cieslix = Cieslix || {
-        _masonry: undefined
+        _masonry: undefined,
+        currentUrl: "/{{ site.facebook_page_id }}/feed"
     };
 
     Cieslix.makeElement = function (item, $parent) {
@@ -34,13 +35,15 @@ permalink: /gallery/
 
     Cieslix.getFeed = function () {
         FB.api(
-                "/{{ site.facebook_page_id }}/feed",
+                this.currentUrl,
                 function (response) {
                     if (response && !response.error) {
-                        console.log(response);
                         $(response.data).each(function () {
                             Cieslix.makeElement(this, $('#container'));
                         });
+                        if (!!response.paging && response.paging.next) {
+                            Cieslix.currentUrl = response.paging.next;
+                        }
                     }
                 }
         );
