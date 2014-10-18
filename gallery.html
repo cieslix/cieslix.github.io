@@ -17,10 +17,18 @@ permalink: /gallery/
                         /* handle the result */
                         console.log(response);
                         $(response.data).each(function () {
-                            $(this.toString()).appendTo($('#gallery'));
+                            Cieslix.makeHtml(this, '#gallery');
                         });
                     }
                 }
         );
     };
+    Cieslix.makeHtml = function (item, parentId) {
+        var $img = $('<img />', { src: this.picture, alt: this.message });
+        var $a = $('<a />', { href: this.link, innerHTML: this.message });
+        var $span = $('<span />', {innerHTML: this.created_time});
+        var $parent = $(parentId);
+        $a.appendChild($span).appendChild($img);
+        $parent.appendChild($a);
+    }
 </script>
