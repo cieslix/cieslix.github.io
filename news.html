@@ -23,7 +23,7 @@ permalink: /news/
     Cieslix.makeElement = function (item, $parent) {
         var $div = $('<div class="item"/>');
         if (!!item.picture) {
-            var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id});
+            var $img = $('<img />', { src: item.picture, id: item.id, alt: item.id, onclick: "Cieslix.getSource(this.id)"});
             $div.prepend($img)
         }
         var $p = $('<p />', { text: item.story ? item.story : item.message });
@@ -33,6 +33,17 @@ permalink: /news/
         $div.append($p).append($a);
         $parent.append($div);
         Cieslix.masonryAdd($div);
+    }
+
+    Cieslix.getSource = function (fbId) {
+        FB.api(
+                '/' + fbId,
+                function (response) {
+                    if (response && !response.error) {
+                        console.log(response);
+                    }
+                }
+        );
     }
 
     Cieslix.getFeed = function () {
