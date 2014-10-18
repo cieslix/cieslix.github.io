@@ -9,6 +9,18 @@ permalink: /gallery/
         setTimeout(Cieslix.execute, 1000);
     });
     var Cieslix = Cieslix || {};
+
+    Cieslix.makeHtml = function (item, parentId) {
+        console.log(item);
+        var $img = $('<img />', { src: item.picture, alt: item.message });
+        var $a = $('<a />', { href: item.link, innerHTML: item.message });
+        var $span = $('<span />', {innerHTML: item.created_time});
+        var $parent = $(parentId);
+        $span.append($a);
+        $img.append($a);
+        $a.append($parent);
+    }
+    
     Cieslix.execute = function () {
         FB.api(
                 "/{{ site.facebook_page_id }}/feed",
@@ -23,13 +35,4 @@ permalink: /gallery/
                 }
         );
     };
-    Cieslix.makeHtml = function (item, parentId) {
-        var $img = $('<img />', { src: this.picture, alt: this.message });
-        var $a = $('<a />', { href: this.link, innerHTML: this.message });
-        var $span = $('<span />', {innerHTML: this.created_time});
-        var $parent = $(parentId);
-        $span.append($a);
-        $img.append($a);
-        $a.append($parent);
-    }
 </script>
