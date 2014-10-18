@@ -3,8 +3,8 @@ layout: page
 title: Gallery
 permalink: /gallery/
 ---
-<div id="gallery">
-    <ul></ul>
+<div>
+    <ul id="container"></ul>
 </div>
 <script>
     $(document).ready(function () {
@@ -14,7 +14,7 @@ permalink: /gallery/
 
     Cieslix.makeHtml = function (item, $parent) {
         console.log(item);
-        var $li = $('<li />');
+        var $li = $('<li class="item"/>');
         var $img = $('<img />', { src: item.picture, alt: item.id});
         var $a = $('<a />', { href: item.link, text: item.story ? item.story : item.message });
         var $span = $('<span />', {text: item.created_time});
@@ -30,7 +30,13 @@ permalink: /gallery/
                         /* handle the result */
 //                        console.log(response);
                         $(response.data).each(function () {
-                            Cieslix.makeHtml(this, $('#gallery ul'));
+                            Cieslix.makeHtml(this, $('#container'));
+                        });
+
+                        new Masonry('#container', {
+                            // options
+                            columnWidth: 200,
+                            itemSelector: '.item'
                         });
                     }
                 }
