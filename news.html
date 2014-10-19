@@ -8,10 +8,9 @@ permalink: /news/
 </div>
 {% if site.facebook_app_id %}
 <script type="text/javascript">
-    C.initLayout(
-            "/{{ site.facebook_page_id }}/feed", '#container', '.item'
-    );
-    C.masonry();
-    setTimeout(C.getFeed, 1000);
+    $(document).ready(function () {
+        C.initLayout("/{{ site.facebook_page_id }}/feed", '#container', '.item').masonry().delay(C.getFeed, 1000);
+
+    });
 </script>
 {% endif %}
