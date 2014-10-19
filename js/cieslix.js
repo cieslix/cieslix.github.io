@@ -60,6 +60,9 @@ var Cieslix = function ($) {
                 self.currentUrl,
                 function (response) {
                     if (response && !response.error) {
+                        if ($(self.loaderGif)) {
+                            $(self.loaderGif).remove();
+                        }
                         $(response.data).each(function () {
                             self._makeElement(this);
                         });
@@ -69,9 +72,6 @@ var Cieslix = function ($) {
                         self._scrollEvent();
                         self.masonry();
 
-                        if ($(self.loaderGif)) {
-                            $(self.loaderGif).hide();
-                        }
                     }
                 }
             );
