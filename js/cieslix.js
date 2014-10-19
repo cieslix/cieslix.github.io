@@ -104,12 +104,12 @@ var Cieslix = function ($) {
     this.facebookLogin = function () {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
-                $(this.containerId).html("");
+                $(self.containerId).html("");
                 self.getFeed();
             }
             else {
                 FB.login(function () {
-                    $(this.containerId).html("");
+                    $(self.containerId).html("");
                     self.getFeed();
                 }, {scope: 'publish_actions'});
             }
