@@ -7,6 +7,7 @@ var Cieslix = function ($) {
     this.containerId = undefined;
     this.itemClass = undefined;
     this.currentUrl = undefined;
+    this.loaderGif = '#loader-gif';
 
     this.initLayout = function (currenturl, containerId, itemClass) {
         this.containerId = containerId;
@@ -67,9 +68,9 @@ var Cieslix = function ($) {
                         }
                         self._scrollEvent();
                         self.masonry();
-                        
-                        if ($(self.itemClass)) {
-                            $(self.containerId).html("");
+
+                        if ($(self.loaderGif)) {
+                            $(self.loaderGif).hide();
                         }
                     }
                 }
