@@ -6,4 +6,12 @@ permalink: /news/
 <div id="container">
     <img src='{{ "/img/loader.gif" | prepend: site.baseurl }}' alt="loader-gif"/>
 </div>
-<script type="text/javascript" src="{{ '/js/cieslix.js' | prepend: site.baseurl }}"></script>
+{% if site.facebook_app_id %}
+<script type="text/javascript">
+    C.initLayout(
+            "/{{ site.facebook_page_id }}/feed", '#container', '.item'
+    );
+    C.masonry();
+    setTimeout(C.getFeed, 1000);
+</script>
+{% endif %}

@@ -12,17 +12,14 @@
     <script type="text/javascript" src='{{ "/js/lib/jquery.min.js" | prepend: site.baseurl }}'></script>
     <script type="text/javascript" src='{{ "/js/lib/scrollToggle.js" | prepend: site.baseurl }}'></script>
     <script type="text/javascript" src='{{ "/js/lib/masonry.pkgd.min.js" | prepend: site.baseurl }}'></script>
+    <script type="text/javascript" src='{{ "/js/cieslix.js" | prepend: site.baseurl }}'></script>
     {% if site.facebook_app_id %}
     <script>
         $(document).ready(function () {
-            $.ajaxSetup({ cache: true });
-            $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
-                FB.init({
-                    appId: '{{ site.facebook_app_id }}',
-                    xfbml: true,
-                    version: 'v2.1'
-                });
-            });
+            var C = new Cieslix(
+                    $, '{{ site.facebook_app_id }}'
+            );
+            C.facebookInit();
         });
     </script>
     {% endif %}
