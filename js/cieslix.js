@@ -94,15 +94,13 @@ var Cieslix = function ($) {
             });
     }
 
-    this.facebookLogin = function (callback) {
+    this.facebookLogin = function () {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
                 console.log('Logged in.');
-                callback ();
             }
             else {
                 FB.login(function () {
-                    callback ();
                 }, {scope: 'publish_actions'});
             }
         });
