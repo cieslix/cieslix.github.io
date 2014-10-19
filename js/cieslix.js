@@ -39,7 +39,7 @@ var Cieslix = function ($) {
             }));
         }
         this._masonryAdd($div);
-    };
+    }
 
     this.getSource = function (fbId) {
         FB.api(
@@ -51,7 +51,7 @@ var Cieslix = function ($) {
             }
         );
         return this;
-    };
+    }
 
     this.getFeed = function () {
         if (!!this.currentUrl) {
@@ -72,7 +72,7 @@ var Cieslix = function ($) {
             );
         }
         return this;
-    };
+    }
 
     this.masonry = function () {
         if (this._masonry === undefined) {
@@ -84,12 +84,12 @@ var Cieslix = function ($) {
         }
         this._masonry.layout();
         return this;
-    };
+    }
 
     this._masonryAdd = function (element) {
         $(this.containerId).append(element);
         this._masonry.appended(element);
-    };
+    }
 
     this._scrollEvent = function () {
         new ScrollToggle($(self.itemClass + ':last').position().top,
@@ -108,15 +108,11 @@ var Cieslix = function ($) {
             }
             else {
                 FB.login(function () {
+                    $(this.containerId).html("");
                     self.getFeed();
                 }, {scope: 'publish_actions'});
             }
         });
         return this;
-    };
-
-    this.delay = function (callback, time) {
-        setTimeout(callback, time);
-        return this;
     }
-};
+}
