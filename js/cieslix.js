@@ -13,6 +13,7 @@ var Cieslix = function ($, appId) {
         this._container = $(containerId);
         this.itemClass = itemClass;
         this.currentUrl = currenturl;
+        return this;
     }
 
     this._makeElement = function (item) {
@@ -120,4 +121,9 @@ var Cieslix = function ($, appId) {
         });
         return this;
     };
+
+    this.delay = function (callback, time) {
+        setTimeout(callback, time);
+        return this;
+    }
 };
