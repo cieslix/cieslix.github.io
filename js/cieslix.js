@@ -30,7 +30,7 @@ var Cieslix = function ($) {
         var $small = $('<small />', {
             text: new Date(item.created_time).toJSON().substring(0, 10)
         });
-        $p.append($small).append('<br />');
+        $p.prepend('<br />').prepend($small);
         $div.append($p).append($a);
         this._masonryAdd($div);
     };
