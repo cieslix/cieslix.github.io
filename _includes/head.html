@@ -15,10 +15,10 @@
     <script type="text/javascript" src='{{ "/js/cieslix.js" | prepend: site.baseurl }}'></script>
     {% if site.facebook_app_id %}
     <script>
+        var C = new Cieslix(
+                $, '{{ site.facebook_app_id }}'
+        );
         $(document).ready(function () {
-            var C = new Cieslix(
-                    $, '{{ site.facebook_app_id }}'
-            );
             C.facebookInit();
         });
     </script>
