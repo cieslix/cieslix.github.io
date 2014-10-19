@@ -60,6 +60,7 @@ var Cieslix = function ($) {
                             self.currentUrl = response.paging.next;
                         }
                         self._scrollEvent();
+                        self.masonry();
                     }
                 }
             );
