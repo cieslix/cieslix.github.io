@@ -18,20 +18,26 @@ var Cieslix = function ($) {
     this._makeElement = function (item) {
         var $div = $('<div />', { class: this.itemClass.replace('.', '')});
         if (!!item.picture) {
-            var $img = $('<img />', {
+            $div.prepend($('<img />', {
                 src: item.picture,
                 id: item.object_id ? item.object_id : item.id,
                 alt: item.id
-            });
-            $div.prepend($img)
+            }));
         }
-        var $p = $('<p />', { text: item.story ? item.story : item.message });
-        var $a = $('<a />', { href: item.link, text: '--- see more ---' });
-        var $small = $('<small />', {
-            text: new Date(item.created_time).toJSON().substring(0, 10)
-        });
-        $p.prepend('<br />').prepend($small);
-        $div.append($p).append($a);
+
+        $div.prepend($('<p />', {
+            text: item.story ? item.story : item.message
+        }).prepend('<br />')
+            .prepend($('<small />', {
+                text: new Date(item.created_time).toJSON().substring(0, 10)
+            })));
+
+        if (!!item.link) {
+            $div.append($('<a />', {
+                href: item.link,
+                text: '--- see more ---'
+            }));
+        }
         this._masonryAdd($div);
     };
 
