@@ -98,11 +98,11 @@ var Cieslix = function ($) {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
                 console.log('Logged in.');
-//                callback;
+                callback;
             }
             else {
                 FB.login(function () {
-//                    callback;
+                    callback;
                 }, {scope: 'publish_actions'});
             }
         });
