@@ -99,11 +99,11 @@ var Cieslix = function ($, appId) {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
                 console.log('Logged in.');
-                callback;
+//                callback;
             }
             else {
                 FB.login(function () {
-                    callback;
+//                    callback;
                 }, {scope: 'publish_actions'});
             }
         });
@@ -111,14 +111,7 @@ var Cieslix = function ($, appId) {
     };
 
     this.facebookInit = function () {
-        $.ajaxSetup({ cache: true });
-        $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
-            FB.init({
-                appId: self._appId,
-                xfbml: true,
-                version: 'v2.1'
-            });
-        });
+
         return this;
     };
 
