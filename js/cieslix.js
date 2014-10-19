@@ -1,36 +1,41 @@
-"use strict";
-$(document).ready(function () {
-    Cieslix.masonry();
-    setTimeout(Cieslix.getFeed, 1000);
-});
+;
+var Cieslix = function ($, appId) {
+    "use strict";
 
-var Cieslix = Cieslix || {
-    _masonry: undefined,
-    container: '#container',
-    itemClass: '.item',
-    currentUrl: "/{{ site.facebook_page_id }}/feed",
+    var self = this;
+    this._appId = appId;
+    this._masonry = undefined;
+    this._container = undefined;
+    this.itemClass = undefined;
+    this.currentUrl = undefined;
 
-    makeElement: function (item, $parent) {
-        var $div = $('<div class="item"/>');
+    this.initLayout = function (currenturl, containerId, itemClass) {
+        this._container = $(containerId);
+        this.itemClass = itemClass;
+        this.currentUrl = currenturl;
+    }
+
+    this._makeElement = function (item) {
+        var $div = $('<div />', { class: this.itemClass});
         if (!!item.picture) {
             var $img = $('<img />', {
                 src: item.picture,
                 id: item.object_id ? item.object_id : item.id,
-                alt: item.id,
-                onclick: "Cieslix.getSource(this.id)"
+                alt: item.id
             });
             $div.prepend($img)
         }
         var $p = $('<p />', { text: item.story ? item.story : item.message });
         var $a = $('<a />', { href: item.link, text: '--- see more ---' });
-        var $small = $('<small />', {text: new Date(item.created_time).toJSON().substring(0, 10)});
-        $p.prepend('<br />').prepend($small);
+        var $small = $('<small />', {
+            text: new Date(item.created_time).toJSON().substring(0, 10)
+        });
+        $p.append($small).append('<br />');
         $div.append($p).append($a);
-        $parent.append($div);
-        Cieslix.masonryAdd($div);
-    },
+        this._masonryAdd($div);
+    };
 
-    getSource: function (fbId) {
+    this.getSource = function (fbId) {
         FB.api(
             '/' + fbId,
             function (response) {
@@ -39,28 +44,30 @@ var Cieslix = Cieslix || {
                 }
             }
         );
-    },
+        return this;
+    };
 
-    getFeed: function () {
-        if (!!Cieslix.currentUrl) {
+    this.getFeed = function () {
+        if (!!this.currentUrl) {
             FB.api(
-                Cieslix.currentUrl,
+                self.currentUrl,
                 function (response) {
                     if (response && !response.error) {
                         $(response.data).each(function () {
-                            Cieslix.makeElement(this, $('#container'));
+                            self._makeElement(this);
                         });
                         if (!!response.paging && response.paging.next) {
-                            Cieslix.currentUrl = response.paging.next;
+                            self.currentUrl = response.paging.next;
                         }
-                        Cieslix.scrollEvent();
+                        self._scrollEvent();
                     }
                 }
             );
         }
-    },
+        return this;
+    };
 
-    masonry: function () {
+    this.masonry = function () {
         if (this._masonry === undefined) {
             this._masonry = new Masonry(this.container, {
                 // options
@@ -69,29 +76,48 @@ var Cieslix = Cieslix || {
             });
         }
         this._masonry.layout();
-    },
+        return this;
+    };
 
-    masonryAdd: function (element) {
+    this._masonryAdd = function (element) {
+        this._container.append(element);
         this._masonry.appended(element);
-    },
+    };
 
-    scrollEvent: function () {
-        new ScrollToggle($(this.itemClass + ':last').position().top, function () {
-            Cieslix.getFeed();
-        }, function () {
-        });
-    },
+    this._scrollEvent = function () {
+        new ScrollToggle($(this.itemClass + ':last').position().top,
+            function () {
+                self.getFeed();
+            },
+            function () {
+                /* do nothing */
+            });
+    }
 
-    facebookLogin: function () {
+    this.facebookLogin = function (callback) {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
                 console.log('Logged in.');
+                callback;
             }
             else {
                 FB.login(function () {
+                    callback;
                 }, {scope: 'publish_actions'});
             }
         });
-    }
-}
+        return this;
+    };
 
+    this.facebookInit = function () {
+        $.ajaxSetup({ cache: true });
+        $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
+            FB.init({
+                appId: self._appId,
+                xfbml: true,
+                version: 'v2.1'
+            });
+        });
+        return this;
+    };
+};
