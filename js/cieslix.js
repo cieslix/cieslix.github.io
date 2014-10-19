@@ -5,12 +5,12 @@ var Cieslix = function ($, appId) {
     var self = this;
     this._appId = appId;
     this._masonry = undefined;
-    this._container = undefined;
+    this.containerId = undefined;
     this.itemClass = undefined;
     this.currentUrl = undefined;
 
     this.initLayout = function (currenturl, containerId, itemClass) {
-        this._container = $(containerId);
+        this.containerId = containerId;
         this.itemClass = itemClass;
         this.currentUrl = currenturl;
         return this;
@@ -70,7 +70,7 @@ var Cieslix = function ($, appId) {
 
     this.masonry = function () {
         if (this._masonry === undefined) {
-            this._masonry = new Masonry('#' + this._container.id, {
+            this._masonry = new Masonry(this.containerId, {
                 // options
                 columnWidth: 200,
                 itemSelector: this.itemClass
@@ -81,7 +81,7 @@ var Cieslix = function ($, appId) {
     };
 
     this._masonryAdd = function (element) {
-        this._container.append(element);
+        $(this.containerId).append(element);
         this._masonry.appended(element);
     };
 
