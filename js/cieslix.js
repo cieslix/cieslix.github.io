@@ -97,10 +97,11 @@ var Cieslix = function ($) {
     this.facebookLogin = function () {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
-                console.log('Logged in.');
+                self.getFeed();
             }
             else {
                 FB.login(function () {
+                    self.getFeed();
                 }, {scope: 'publish_actions'});
             }
         });
