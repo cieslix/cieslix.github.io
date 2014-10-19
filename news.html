@@ -11,6 +11,7 @@ permalink: /news/
     $(document).ready(function () {
         C.initLayout("/{{ site.facebook_page_id }}/feed", '#container', '.item');
         C.masonry();
+        C.facebookLogin();
         C.delay(C.getFeed, 1000);
     });
 </script>
