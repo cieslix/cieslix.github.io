@@ -16,7 +16,7 @@ var Cieslix = function ($) {
     }
 
     this._makeElement = function (item) {
-        var $div = $('<div />', { class: this.itemClass});
+        var $div = $('<div />', { class: this.itemClass.replace('.', '')});
         if (!!item.picture) {
             var $img = $('<img />', {
                 src: item.picture,
@@ -85,7 +85,7 @@ var Cieslix = function ($) {
     };
 
     this._scrollEvent = function () {
-        new ScrollToggle($(this.itemClass + ':last').position().top,
+        new ScrollToggle($(self.itemClass + ':last').position().top,
             function () {
                 self.getFeed();
             },
