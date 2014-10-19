@@ -26,7 +26,7 @@ var Cieslix = function ($) {
             }));
         }
 
-        $div.prepend($('<p />', {
+        $div.append($('<p />', {
             text: item.story ? item.story : item.message
         }).prepend('<br />')
             .prepend($('<small />', {
