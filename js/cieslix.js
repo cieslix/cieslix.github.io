@@ -1,9 +1,8 @@
 ;
-var Cieslix = function ($, appId) {
+var Cieslix = function ($) {
     "use strict";
 
     var self = this;
-    this._appId = appId;
     this._masonry = undefined;
     this.containerId = undefined;
     this.itemClass = undefined;
@@ -107,11 +106,6 @@ var Cieslix = function ($, appId) {
                 }, {scope: 'publish_actions'});
             }
         });
-        return this;
-    };
-
-    this.facebookInit = function () {
-
         return this;
     };
 
