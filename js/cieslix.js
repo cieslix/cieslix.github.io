@@ -67,6 +67,10 @@ var Cieslix = function ($) {
                         }
                         self._scrollEvent();
                         self.masonry();
+                        
+                        if ($(self.itemClass)) {
+                            $(self.containerId).html("");
+                        }
                     }
                 }
             );
@@ -104,12 +108,10 @@ var Cieslix = function ($) {
     this.facebookLogin = function () {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
-                $(self.containerId).html("");
                 self.getFeed();
             }
             else {
                 FB.login(function () {
-                    $(self.containerId).html("");
                     self.getFeed();
                 }, {scope: 'publish_actions'});
             }
