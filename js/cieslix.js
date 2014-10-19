@@ -70,7 +70,7 @@ var Cieslix = function ($, appId) {
 
     this.masonry = function () {
         if (this._masonry === undefined) {
-            this._masonry = new Masonry(this._container, {
+            this._masonry = new Masonry(this._container.id, {
                 // options
                 columnWidth: 200,
                 itemSelector: this.itemClass
