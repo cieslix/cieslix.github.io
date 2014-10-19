@@ -104,6 +104,7 @@ var Cieslix = function ($) {
     this.facebookLogin = function () {
         FB.getLoginStatus(function (response) {
             if (response.status === 'connected') {
+                $(this.containerId).html("");
                 self.getFeed();
             }
             else {
