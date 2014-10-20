@@ -114,7 +114,7 @@ var Cieslix = function ($) {
             else {
                 FB.login(function () {
                     self.getFeed();
-                }, {scope: 'publish_actions'});
+                }, {scope: 'user_likes'});
             }
         });
         return this;
