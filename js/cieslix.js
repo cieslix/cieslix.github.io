@@ -7,7 +7,7 @@ var Cieslix = function ($) {
     this.containerId = undefined;
     this.itemClass = undefined;
     this.currentUrl = undefined;
-    this.loaderGif = '#loader-gif';
+    this.loaderGif = $('#loader-gif');
 
     this.initLayout = function (currenturl, containerId, itemClass) {
         this.containerId = containerId;
@@ -60,8 +60,8 @@ var Cieslix = function ($) {
                 self.currentUrl,
                 function (response) {
                     if (response && !response.error) {
-                        if ($(self.loaderGif)) {
-                            $(self.loaderGif).remove();
+                        if (self.loaderGif) {
+                            self.loaderGif.remove();
                         }
                         $(response.data).each(function () {
                             self._makeElement(this);
