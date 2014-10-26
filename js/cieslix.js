@@ -14,7 +14,7 @@ var Cieslix = function ($) {
         this.itemClass = itemClass;
         this.currentUrl = currenturl;
         return this;
-    }
+    };
 
     this._makeElement = function (item) {
         var $div = $('<div />', { class: this.itemClass.replace('.', '')});
@@ -40,7 +40,7 @@ var Cieslix = function ($) {
             }));
         }
         this._masonryAdd($div);
-    }
+    };
 
     this.getSource = function (fbId) {
         FB.api(
@@ -52,7 +52,7 @@ var Cieslix = function ($) {
             }
         );
         return this;
-    }
+    };
 
     this.getFeed = function () {
         if (!!this.currentUrl) {
@@ -77,7 +77,7 @@ var Cieslix = function ($) {
             );
         }
         return this;
-    }
+    };
 
     this.masonry = function () {
         if (this._masonry === undefined) {
@@ -89,12 +89,12 @@ var Cieslix = function ($) {
         }
         this._masonry.layout();
         return this;
-    }
+    };
 
     this._masonryAdd = function (element) {
         $(this.containerId).append(element);
         this._masonry.appended(element);
-    }
+    };
 
     this._scrollEvent = function () {
         new ScrollToggle($(self.itemClass + ':last').position().top,
@@ -104,7 +104,7 @@ var Cieslix = function ($) {
             function () {
                 /* do nothing */
             });
-    }
+    };
 
     this.facebookLogin = function () {
         FB.getLoginStatus(function (response) {
@@ -118,5 +118,5 @@ var Cieslix = function ($) {
             }
         });
         return this;
-    }
+    };
 }
