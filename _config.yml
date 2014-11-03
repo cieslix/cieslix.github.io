@@ -14,6 +14,9 @@ twitter_username: cieslix
 github_username: cieslix
 facebook_app_id: 278339709043982
 facebook_page_id: artdent.krakow
+instagram_feed: https://api.instagram.com/v1/users/self/feed?access_token=
+instagram_auth_url: https://instagram.com/oauth/authorize/?client_id=2268760eca0145ecae833b2d41103dbf&redirect_uri=https://cieslix.github.io/&response_type=token
+instagram_ac: 1103928448.2268760.37d780ceffdd43fbb867c26025780d0c
 
 # Build settings
 markdown: kramdown
