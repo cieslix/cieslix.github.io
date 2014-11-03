@@ -26,6 +26,7 @@ var Cieslix = function ($) {
         }).done(function (r) {
             for (var i in r.data) {
                 self._makeInstElement(r.data[i]);
+                console.log(r.data[i]);
             }
         });
     };
