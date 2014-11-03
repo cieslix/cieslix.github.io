@@ -25,7 +25,7 @@ var Cieslix = function ($) {
             jsonpCallback: "jsonpcallback"
         }).done(function (r) {
             for (var i in r.data) {
-                self._makeInstElement(r.data[i]);
+                //self._makeInstElement(r.data[i]);
                 console.log(r.data[i]);
             }
         });
