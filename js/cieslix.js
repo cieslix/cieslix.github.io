@@ -16,8 +16,14 @@ var Cieslix = function ($) {
         return this;
     };
 
+    this.instagramInit = function () {
+        $.ajax(this.currentUrl).done(function (response) {
+            console.log(response)
+        });
+    };
+
     this._makeElement = function (item) {
-        var $div = $('<div />', { class: this.itemClass.replace('.', '')});
+        var $div = $('<div />', {class: this.itemClass.replace('.', '')});
         if (!!item.picture) {
             $div.prepend($('<img />', {
                 src: item.picture,

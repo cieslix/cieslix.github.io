@@ -1,0 +1,18 @@
+---
+layout: page
+title: Instagram
+permalink: /instagram/
+---
+
+<div id="container">
+    <img src='{{ "/img/loader.gif" | prepend: site.baseurl }}' alt="loader-gif" id="loader-gif"/>
+</div>
+{% if site.instagram_auth_url %}
+<script type="text/javascript">
+    $(document).ajaxComplete(function () {
+        C.initLayout("{{ site.instagram_feed }}{{ site.instagram_ac }}", '#container', '.item');
+        C.masonry();
+        C.instagramInit();
+    });
+</script>
+{% endif %}
