@@ -17,8 +17,17 @@ var Cieslix = function ($) {
     };
 
     this.instagramInit = function () {
-        $.ajax(this.currentUrl).done(function (response) {
-            console.log(response)
+        $.ajax({
+            method: "GET",
+            url: this.currentUrl,
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "jsonpcallback",
+            success: function (data) {
+                console.log(data);
+            }
+        }).done(function (data) {
+            console.log(data);
         });
     };
 
