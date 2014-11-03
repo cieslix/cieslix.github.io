@@ -22,13 +22,38 @@ var Cieslix = function ($) {
             url: this.currentUrl,
             dataType: "jsonp",
             jsonp: "callback",
-            jsonpCallback: "jsonpcallback",
-            success: function (data) {
-                console.log(data);
+            jsonpCallback: "jsonpcallback"
+        }).done(function (r) {
+            for (var i in r.data) {
+                self._makeInstElement(r.data[i]);
             }
-        }).done(function (data) {
-            console.log(data);
         });
+    };
+
+    this._makeInstElement = function (item) {
+        var $div = $('<div />', {class: this.itemClass.replace('.', '')});
+        if (!!item.picture) {
+            $div.prepend($('<img />', {
+                src: item.images.low_resolution.url,
+                id: item.caption.id,
+                alt: item.caption.text
+            }));
+        }
+
+        $div.append($('<p />', {
+            text: item.caption.text
+        }).prepend('<br />')
+            .prepend($('<small />', {
+                text: new Date(item.caption.created_time * 1000).toJSON().substring(0, 10)
+            })));
+
+        if (!!item.link) {
+            $div.append($('<a />', {
+                href: item.link,
+                text: '--- see more ---'
+            }));
+        }
+        this._masonryAdd($div);
     };
 
     this._makeElement = function (item) {
