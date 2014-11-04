@@ -124,7 +124,7 @@ var Cieslix = function ($) {
         if (this._masonry === undefined) {
             this._masonry = new Masonry(this.containerId, {
                 // options
-                columnWidth: 200,
+                columnWidth: '25%',
                 itemSelector: this.itemClass
             });
         }
