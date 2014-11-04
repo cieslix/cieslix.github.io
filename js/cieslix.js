@@ -26,8 +26,8 @@ var Cieslix = function ($) {
         }).done(function (r) {
             for (var i in r.data) {
                 self._makeInstElement(r.data[i]);
-                console.log(r.data[i]);
             }
+            self.masonry();
         });
     };
 
@@ -35,7 +35,7 @@ var Cieslix = function ($) {
         var $div = $('<div />', {class: this.itemClass.replace('.', '')});
         if (!!item.images) {
             $div.prepend($('<img />', {
-                src: item.images.low_resolution.url,
+                src: item.images.thumbnail.url.replace('http:', window.location.protocol),
                 id: item.id,
                 alt: item.caption ? item.caption.text : ''
             }));
@@ -69,10 +69,10 @@ var Cieslix = function ($) {
 
         $div.append($('<p />', {
             text: item.story ? item.story : item.message
-        }).prepend('<br />')
-            .prepend($('<small />', {
-                text: new Date(item.created_time).toJSON().substring(0, 10)
-            })));
+        })).prepend('<br />');
+        $div.prepend($('<small />', {
+            text: new Date(item.created_time).toJSON().substring(0, 10)
+        }));
 
         if (!!item.link) {
             $div.append($('<a />', {
