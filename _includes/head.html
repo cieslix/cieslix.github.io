@@ -14,10 +14,13 @@
     <script type="text/javascript" src='{{ "/js/lib/jquery.min.js" | prepend: site.baseurl }}'></script>
     <script type="text/javascript" src='{{ "/js/lib/scrollToggle.js" | prepend: site.baseurl }}'></script>
     <script type="text/javascript" src='{{ "/js/lib/masonry.pkgd.min.js" | prepend: site.baseurl }}'></script>
+    <script type="text/javascript" src='{{ "/js/lib/imagesloaded.pkgd.min.js" | prepend: site.baseurl }}'></script>
     <script type="text/javascript" src='{{ "/js/cieslix.js" | prepend: site.baseurl }}'></script>
-    {% if site.facebook_app_id %}
     <script>
         var C = new Cieslix($);
+    </script>
+    {% if site.facebook_app_id %}
+    <script>
         $(document).ready(function () {
             $.ajaxSetup({ cache: true });
             $.getScript("//connect.facebook.net/en_US/sdk.js", function () {

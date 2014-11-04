@@ -132,7 +132,9 @@ var Cieslix = function ($) {
                 itemSelector: this.itemClass
             });
         }
-        this._masonry.layout();
+        $(this.containerId).imagesLoaded(function () {
+            this._masonry.layout();
+        });
         return this;
     };
 
