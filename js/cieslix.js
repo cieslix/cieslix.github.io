@@ -35,7 +35,7 @@ var Cieslix = function ($) {
         var $div = $('<div />', {class: this.itemClass.replace('.', '')});
         if (!!item.images) {
             $div.prepend($('<img />', {
-                src: item.images.thumbnail.url.replace('http:', window.location.protocol),
+                src: item.images.low_resolution.url.replace('http:', window.location.protocol),
                 id: item.id,
                 alt: item.caption ? item.caption.text : ''
             }));
