@@ -46,7 +46,7 @@ var Cieslix = function ($) {
 
         $div.append($('<p />', {
             text: item.caption ? item.caption.text : ''
-        }).prepend('<br />'));
+        }));
         $div.prepend($('<small />', {
             text: new Date(item.created_time * 1000).toJSON().substring(0, 10)
         }));
@@ -127,7 +127,7 @@ var Cieslix = function ($) {
         if (this._masonry === undefined) {
             this._masonry = new Masonry(this.containerId, {
                 // options
-                //columnWidth: this.itemClass,
+                columnWidth: this.itemClass,
                 itemSelector: this.itemClass
             });
         }
