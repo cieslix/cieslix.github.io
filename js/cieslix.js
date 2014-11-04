@@ -133,7 +133,7 @@ var Cieslix = function ($) {
             });
         }
         $(this.containerId).imagesLoaded(function () {
-            this._masonry.layout();
+            self._masonry.layout();
         });
         return this;
     };
