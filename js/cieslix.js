@@ -3,16 +3,17 @@ var Cieslix = function ($) {
     "use strict";
 
     var self = this;
-    this._masonry = undefined;
-    this.containerId = undefined;
-    this.itemClass = undefined;
-    this.currentUrl = undefined;
-    this.loaderGif = $('#loader-gif');
+    this._masonry = null;
+    this.containerId = null;
+    this.itemClass = null;
+    this.currentUrl = null;
+    this.loaderGif = null;
 
     this.initLayout = function (currenturl, containerId, itemClass) {
         this.containerId = containerId;
         this.itemClass = itemClass;
         this.currentUrl = currenturl;
+        this.loaderGif = $('#loader-gif');
         return this;
     };
 
@@ -124,7 +125,7 @@ var Cieslix = function ($) {
     };
 
     this.masonry = function () {
-        if (this._masonry === undefined) {
+        if (this._masonry === null) {
             this._masonry = new Masonry(this.containerId, {
                 // options
                 columnWidth: this.itemClass,
