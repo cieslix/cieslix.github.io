@@ -35,7 +35,7 @@ var Cieslix = function ($) {
         var $div = $('<div />', {class: this.itemClass.replace('.', '')});
         if (!!item.images) {
             $div.prepend($('<img />', {
-                src: item.images.low_resolution.url.replace('http:', window.location.protocol),
+                src: item.images.low_resolution.url.replace('http:', document.location.protocol),
                 id: item.id,
                 alt: item.caption ? item.caption.text : ''
             }));
@@ -124,7 +124,7 @@ var Cieslix = function ($) {
         if (this._masonry === undefined) {
             this._masonry = new Masonry(this.containerId, {
                 // options
-                columnWidth: '25%',
+                columnWidth: this.itemClass,
                 itemSelector: this.itemClass
             });
         }
