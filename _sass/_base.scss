@@ -180,7 +180,7 @@ pre {
 #container {
   width: 100%;
   .item {
-    max-width: calc(25% - (#{$spacing-unit}));
+    width: calc(25% - (#{$spacing-unit}));
     padding-right: $spacing-unit / 2;
     padding-left: $spacing-unit / 2;
     &:after {
