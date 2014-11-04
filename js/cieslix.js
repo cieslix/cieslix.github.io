@@ -24,6 +24,9 @@ var Cieslix = function ($) {
             jsonp: "callback",
             jsonpCallback: "jsonpcallback"
         }).done(function (r) {
+            if (self.loaderGif) {
+                self.loaderGif.remove();
+            }
             for (var i in r.data) {
                 self._makeInstElement(r.data[i]);
             }
