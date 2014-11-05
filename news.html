@@ -1,0 +1,18 @@
+---
+layout: page
+title: News
+permalink: /news/
+---
+
+<div id="container">
+    <img src='{{ "/img/loader.gif" | prepend: site.baseurl }}' alt="loader-gif" id="loader-gif"/>
+</div>
+{% if site.facebook_app_id %}
+<script type="text/javascript">
+    $(document).ajaxComplete(function () {
+        C.initLayout("/{{ site.facebook_page_id }}/feed", '#container', '.item');
+        C.masonry();
+        C.facebookLogin();
+    });
+</script>
+{% endif %}

@@ -1,0 +1,36 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+    <base href="{{site.url}}"/>
+    <meta name="description" content="{{ site.description }}">
+
+    <link rel="stylesheet" href='{{ "/css/main.css" | prepend: site.baseurl }}'>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <script type="text/javascript" src='{{ "/js/lib/jquery.min.js" | prepend: site.baseurl }}'></script>
+    <script type="text/javascript" src='{{ "/js/lib/scrollToggle.js" | prepend: site.baseurl }}'></script>
+    <script type="text/javascript" src='{{ "/js/lib/masonry.pkgd.min.js" | prepend: site.baseurl }}'></script>
+    <script type="text/javascript" src='{{ "/js/lib/imagesloaded.pkgd.min.js" | prepend: site.baseurl }}'></script>
+    <script type="text/javascript" src='{{ "/js/cieslix.js" | prepend: site.baseurl }}'></script>
+    <script>
+        var C = new Cieslix($);
+    </script>
+    {% if site.facebook_app_id %}
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({ cache: true });
+            $.getScript("//connect.facebook.net/en_US/sdk.js", function () {
+                FB.init({
+                    appId: '{{ site.facebook_app_id }}',
+                    xfbml: true,
+                    version: 'v2.1'
+                });
+            });
+        });
+    </script>
+    {% endif %}
+</head>

@@ -1,0 +1,22 @@
+# Site settings
+title: Cieslix (PHP, Zend-Framework-1, Magento)
+email: cieslix@gmail.com
+company: Paweł Cieślik "CIESLIX"
+companyId: >
+  NIP: 675-128-62-47 REGON: 121208770
+telephone: +48 888-121-538
+address: 30-698 Kraków, ul. Niewodniczańskiego 37a
+description: >
+  Paweł Cieślik PHP Developer (Magento, Zend Framework 1)
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://cieslix.github.io/" # the base hostname & protocol for your site
+twitter_username: cieslix
+github_username: cieslix
+#facebook_app_id: 278339709043982
+#facebook_page_id: artdent.krakow
+instagram_feed: https://api.instagram.com/v1/users/self/feed?access_token=
+instagram_auth_url: https://instagram.com/oauth/authorize/?client_id=2268760eca0145ecae833b2d41103dbf&redirect_uri=https://cieslix.github.io/&response_type=token
+instagram_ac: 1103928448.2268760.37d780ceffdd43fbb867c26025780d0c
+
+# Build sett/ings
+markdown: kramdown
